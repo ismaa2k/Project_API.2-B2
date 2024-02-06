@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { parse } from "path";
 import { WeatherController } from "./controller/WeatherController";
-
+import { SERV_CONNECT_MESSAGE } from "./constantes/errorMessages";
 import dotenv from "dotenv";
 import { errorHandler } from "./middleware/errorHandler";
 import { API_KEY } from "./constantes/config";
@@ -13,7 +13,7 @@ const weatherController = new WeatherController(API_KEY);
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 app.get("/test", (req: Request, res: Response) => {
-  res.send("serv yes");
+  res.send(SERV_CONNECT_MESSAGE);
 });
 
 app.get(
